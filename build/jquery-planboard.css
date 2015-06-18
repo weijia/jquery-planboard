@@ -1,0 +1,242 @@
+/*
+ jQuery Planboard version v1.0.0 - 2015-06-18 - http://github.com/marc-portier/jquery-planboard
+
+ (c) 2012, Marc Portier
+ CC-SA-BY license 2.0 - BE, see http://creativecommons.org/licenses/by/2.0/be/
+*/
+.planboard {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  font-size: 0.8em;
+  font-family: sans-serif;
+  overflow: hidden;
+  color: #000054;
+}
+.planboard .highlight {
+  font-weight: bold;
+  font-size: 1.8em;
+  color: #c92200;
+}
+.planboard .row:nth-child(even) {
+  background-color: #fffff8;
+}
+.planboard .row:nth-child(odd) {
+  background-color: #f8fffc;
+}
+.planboard .uc {
+  border-left: 1px solid black;
+  overflow: hidden;
+}
+.planboard .uc:first-child {
+  border-top: 1px solid black;
+}
+.planboard .u {
+  border-bottom: 1px solid black;
+  border-right: 1px dashed black;
+  overflow: visible;
+  overflow-y: visible;
+  float: left;
+  line-height: 32px;
+  position: relative;
+  background-color: rgba(241, 255, 197, 0.2);
+}
+.planboard .u.row:nth-child(even) {
+  background-color: #fffff8;
+}
+.planboard .u.row:nth-child(odd) {
+  background-color: #f8fffc;
+}
+.planboard .u.h {
+  height: 31px;
+}
+.planboard .u.w {
+  width: 31px;
+}
+.planboard .u .cell {
+  height: 31px;
+  width: 31px;
+}
+.planboard .u .cell.pmark {
+  background-color: rgba(255, 226, 197, 0.2);
+  z-index: 1;
+}
+.planboard .u.we {
+  background-color: rgba(229, 232, 220, 0.2);
+}
+.planboard .u.m1 {
+  background-color: rgba(212, 197, 255, 0.2);
+}
+.planboard .u.m1.we {
+  background-color: rgba(223, 220, 232, 0.2);
+}
+.planboard .u .period {
+  -moz-border-radius-topleft: 25px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-top-left-radius: 25px;
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  position: absolute;
+  top: -50px;
+  height: 110px;
+  padding-top: 5px;
+  background-color: rgba(255, 226, 197, 0.2);
+  color: #c56300;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 12px !important;
+}
+.planboard .months {
+  overflow: hidden;
+  height: 25px;
+}
+.planboard .months .month {
+  -moz-border-radius-topleft: 25px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-top-left-radius: 25px;
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  float: left;
+  overflow: hidden;
+  height: 25px;
+  padding-top: 5px;
+  border: 1px dashed black;
+  font-weight: bold;
+  background-color: rgba(241, 255, 197, 0.2);
+  color: #94c500;
+}
+.planboard .months .month.m1 {
+  background-color: rgba(212, 197, 255, 0.2);
+  color: #3100c5;
+}
+.planboard .row {
+  margin: 0;
+}
+.planboard .board .u.h.w {
+  position: relative;
+}
+.planboard .board .u.h.w .alloc {
+  position: absolute;
+  overflow: hidden;
+  background-color: rgba(50, 50, 50, 0.5);
+  font-size: 0.85em;
+  font-weight: bold;
+  height: 24px;
+  line-height: 28px;
+  top: 2px;
+  z-index: 1;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  border-radius: 24px;
+  -moz-box-shadow: inset 0px 1px 1px 0px #ffffff f;
+  -webkit-box-shadow: inset 0px 1px 1px 0px #ffffff f;
+  box-shadow: inset 0px 1px 1px 0px #ffffff f;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+  background: -moz-linear-gradient(center top, #ededed 5%, #dfdfdf 100%);
+  background-color: #ededed;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  color: #777777;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px #ffffff;
+}
+.planboard .board .u.h.w .alloc:hover {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+  background: -moz-linear-gradient(center top, #dfdfdf 5%, #ededed 100%);
+  background-color: #dfdfdf;
+}
+.planboard .board .u.h.w .alloc:active {
+  position: relative;
+  top: 1px;
+}
+.planboard .tools {
+  z-index: 3;
+  position: relative;
+}
+.planboard .tools .tool {
+  vertical-align: middle;
+  text-align: center;
+  height: 32px;
+  width: 32px;
+  clear: both;
+  float: left;
+  padding: 0px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f0f0f0), color-stop(1, #a0a0a0));
+  background: -moz-linear-gradient(center top, #f0f0f0 5%, #a0a0a0 100%);
+  background-color: #f0f0f0;
+}
+.planboard .tools .tool img {
+  height: 28px;
+  width: 28px;
+}
+.planboard .tools .tool.pressed {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #a0a0a0), color-stop(1, #f0f0f0));
+  background: -moz-linear-gradient(center top, #a0a0a0 5%, #f0f0f0 100%);
+  background-color: #a0a0a0;
+}
+.planboard .tools .datepick {
+  z-index: 3;
+  position: absolute;
+  right: 0px;
+}
+.planboard .status {
+  overflow: hidden;
+  background-color: #eef;
+  text-align: left;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-style: italic;
+}
+.planboard .north,
+.planboard .south,
+.planboard .east,
+.planboard .west,
+.planboard .equator,
+.planboard .meridian {
+  float: left;
+  text-align: center;
+  overflow: visible;
+  position: relative;
+}
+.planboard .north .uc {
+  overflow: visible;
+}
+.planboard .north .u.w {
+  line-height: 24px;
+}
+.planboard .north .periods,
+.planboard .north .months {
+  height: 25px;
+}
+.planboard .north.east button.colAppend {
+  height: 32px;
+  width: 32px;
+  float: left;
+}
+.planboard .north.west button.colPrepend {
+  height: 32px;
+  width: 32px;
+  float: right;
+  margin-right: 16px;
+}
+.planboard .west {
+  clear: left;
+}
+.planboard .west .u.h {
+  width: 77px;
+}
+.planboard .east {
+  float: right;
+  text-align: right;
+}
+.jspVerticalBar,
+.jspHorizontalBar {
+  z-index: 2;
+}
